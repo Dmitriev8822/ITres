@@ -38,7 +38,7 @@ def register(login, password, fio):
     if existing_user:
         return 1  # user existing
 
-    new_user = User(login=login, password=password, fio=fio, efficiency=0)
+    new_user = User(login=login, password=password, fio=fio)
     db.session.add(new_user)
     db.session.commit()
 
@@ -47,8 +47,6 @@ def register(login, password, fio):
 
 def new_news(user, title, text):
     news = Article(user=user, title=title, text=text)
-    cur_user = User.query.filter_by(id=user).first()
-    cur_user.efficiency = cur_user.efficiency + 1
 
     db.session.add(news)
     db.session.commit()
@@ -57,4 +55,5 @@ def new_news(user, title, text):
 
 
 if __name__ == '__main__':
-    db.create_all()
+    register('123', '123', '321')
+    create_db()

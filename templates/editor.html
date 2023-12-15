@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/style_editor.css">
+    <title>Простой текстовый редактор</title>
+</head>
+<body>
+    <h1>Простой текстовый редактор</h1>
+    <form action="/news_preview" method="POST" enctype="multipart/form-data">
+        <input type="text" id="title" name="title" placeholder="Заголовок">
+        <input type="file" id="photo" name="photo" onchange="displayImage(event)">
+
+        <textarea id="editor" name="editor" placeholder="Начните писать здесь..."></textarea>
+        <button id="previewButton">Предпросмотр</button>
+    </form>
+    <script>
+    const editor = document.getElementById('editor');
+    editor.addEventListener('keydown', function(event) {
+        if (event.key === 'Tab') {
+            event.preventDefault();
+
+            var caretPos = editor.selectionStart;
+            var text = editor.value;
+            editor.value = text.substring(0, caretPos) + '    ' + text.substring(caretPos);
+            editor.selectionStart = caretPos + 4;
+            editor.selectionEnd = caretPos + 4;
+        }
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../static/css/style_login.css">
+	<title>Login</title>
+</head>
+<body>
+	<form action="/authorization" method="POST">
+		<label for="login">Логин:</label>
+		<input type="text" id="login" name="login" value="{{ login_text }}" required> <br>
+
+		<label for="password">Пароль:</label>
+		<input type="password" id="password" name="password" value="{{ password_text }}" required> <br>
+
+		<button>Войти</button>
+	</form>
+</body>
+</html>

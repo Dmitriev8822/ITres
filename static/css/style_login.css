@@ -1,0 +1,41 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border: 2px solid #007bff; /* устанавливаем более выраженную границу */
+    border-radius: 10px; /* увеличиваем радиус скругления углов */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+label {
+    margin-bottom: 10px;
+}
+input, button {
+    padding: 12px; /* увеличиваем внутренний отступ */
+    margin-bottom: 15px; /* увеличиваем отступ между элементами */
+    border: 2px solid #007bff; /* устанавливаем более выраженную границу */
+    border-radius: 8px; /* увеличиваем радиус скругления углов */
+}
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s; /* добавляем плавное изменение свойств при наведении */
+}
+button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05); /* добавляем небольшое увеличение при наведении */
+}
+
+
+
+
+

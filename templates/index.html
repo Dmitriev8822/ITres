@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="..\static\css\style.css">
+        <title>ITres</title>
+    </head>
+    <body>
+
+
+        <div class="header">
+            <div class="container">
+                <div class="header__inner">
+                    <div class="header__logo">
+                        <img src="..\static\img\logo.svg">
+                        <h1>ITres</h1>
+                    </div>
+                    <nav class="nav">
+                        <div class="nav__link">ФОТО-ГАЛЕРЕЯ</div>
+                        <div class="nav__link">ПОРТФОЛИО</div>
+                        <div class="nav__link">НОВОСТИ</div>
+                    </nav>
+                    <div>
+                        <a href="" style="text-decoration: none;">
+                            <img class="social__img" src="..\static\img\tg.svg" alt="">
+                        </a>
+                        <a href="https://vk.com/stgau_itres" style="text-decoration: none;">
+                            <img class="social__img" src="..\static\img\vk.svg" alt="">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- Header -->
+
+
+        <div class="intro">
+            <div class="container">
+                <div class="intro__inner">
+                    <div class="about">О нас:</div>
+                    <div class="info"></div>
+                </div>
+            </div>
+        </div> <!-- Intro -->
+
+
+        <div class="photo">
+            <div class="containet">
+                <div class="photo__inner">
+                    <div class="view">
+                        <div onclick="image(0)" style="transform: rotate(180deg); cursor: pointer;" ><img src="..\static\img\next.svg"></img></div>
+                        <div onmouseover="btn_show()" onmouseover="btn_noshow()" class="wrapper">
+                            <script type="text/javascript">  
+                                var imageArray = [
+                                    "../static/img/2.jpg",
+                                    "../static/img/3.jpg",
+                                    "../static/img/4.jpg",
+                                    "../static/img/5.jpg",
+                                    "../static/img/6.jpg",
+                                    "../static/img/7.jpg",
+                                    "../static/img/8.jpg",
+                                    "../static/img/9.jpg",
+                                    "../static/img/photo.svg",
+                                ];
+                                window.number = '0';
+                                var imageCount = imageArray.length;     
+                                function image(num){                
+                                    if(num == 1){
+                                        if(number < imageCount - 1){                        
+                                            number++;
+                                            document.getElementById('images').src = imageArray[number];
+                                        }
+                                    }                    
+                                    else{
+                                        if(number > 0){                     
+                                            number--;
+                                            document.getElementById('images').src = imageArray[number];
+                                        }
+                                    }
+                                }
+                                function select(num) {
+                                    document.getElementById('images').src = imageArray[num];
+                                    window.number = num;
+                                }
+                                document.write('<img id="images" src="' + imageArray[0] + '">');
+                            </script>
+                        </div>
+                        <div onclick="image(1)" style="cursor: pointer;"><img src="..\static\img\next.svg"></img></div>
+                    </div>
+                    <div class="choose">
+                        <div class="circle" onclick="select(0)"></div>
+                        <div class="circle" onclick="select(1)"></div>
+                        <div class="circle" onclick="select(2)"></div>
+                        <div class="circle" onclick="select(3)"></div>
+                        <div class="circle" onclick="select(4)"></div>
+                        <div class="circle" onclick="select(5)"></div>
+                        <div class="circle" onclick="select(6)"></div>
+                        <div class="circle" onclick="select(7)"></div>
+                        <div class="circle" onclick="select(8)"></div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- Photo -->
+
+        <div class="aboutf">
+            <div class="container">
+                <div class="aboutf__inner">
+                    <div class="squares">
+                        <div class="square"></div>
+                        <div class="square"></div>
+                        <div class="square"></div>
+                    </div>
+                    <img src="..\static\img\phone.svg" class="resize__phone">
+                </div>
+            </div>
+        </div> <!-- About Footer -->
+
+        <div class="footer">
+            <div class="container">
+                <footer class="footer__inner">
+                    <div class="square"></div>
+                    <div class="square"></div>
+                    <div class="square"></div>
+                </footer>
+            </div>
+        </div>
+    </body>
+</html>
