@@ -1,5 +1,6 @@
 from flask import request, render_template, redirect
 from flask_login import logout_user, login_required, current_user
+from werkzeug.utils import secure_filename
 
 from PIL import Image
 import os
@@ -83,20 +84,31 @@ def save_photo(file, image_path, name, max_size=720):
     resized_image.save(path_to_save)
 
 
-@app.route('/news_preview', methods=['GET', 'POST'])
-def news_preview():
+@app.route('/publish', methods=['GET', 'POST'])
+def publish():
     if request.method == 'POST':
         title = request.form.get('title')
         text = request.form.get('editor')
-        image = request.files.get('photo')
-        path_to_image = path_join_sing.join([r'..', path_to_serv_images, 'here_your_photo.jpg'])
-        if image:
-            save_photo(image, path_to_temp_images, str(current_user.id))
-            path_to_image = path_join_sing.join([r'..', is_image(str(current_user.id), path_to_temp_images, path=True)])
+        photo = request.files.get('photo')
+        photo.filename = secure_filename(photo.filename)
 
-        print(path_to_image)
-        return render_template('news_preview.html', title_text=title, text_text=text, path_to_image=path_to_image)
+        art_id = new_news(user=str(current_user.id), title=title, text=text)
+
+        save_photo(photo, path_to_news_images, str(art_id))
+        return redirect('/')
+
     return redirect('/editor')
+
+
+@app.route('/news_preview')
+def news_preview():
+    res = get_news()
+    for news in res:
+        news['photo'] = path_join_sing.join([r'..', path_to_news_images, news['id'] + '.jpg'])
+
+    print(res)
+
+    return render_template('news_preview.html', all_news=res)
 
 
 @app.route('/editor', methods=['GET', 'POST'])

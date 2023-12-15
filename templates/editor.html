@@ -8,12 +8,12 @@
 </head>
 <body>
     <h1>Простой текстовый редактор</h1>
-    <form action="/news_preview" method="POST" enctype="multipart/form-data">
+    <form action="/publish" method="POST" enctype="multipart/form-data">
         <input type="text" id="title" name="title" placeholder="Заголовок">
         <input type="file" id="photo" name="photo" onchange="displayImage(event)">
 
         <textarea id="editor" name="editor" placeholder="Начните писать здесь..."></textarea>
-        <button id="previewButton">Предпросмотр</button>
+        <button id="previewButton">Опубликовать</button>
     </form>
     <script>
     const editor = document.getElementById('editor');
