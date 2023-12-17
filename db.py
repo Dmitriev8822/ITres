@@ -54,7 +54,7 @@ def new_news(user, title, text):
     return news.id  # all ok
 
 
-def get_news():
+def get_all_news():
     all_news = Article.query.all()
     result = []
     for news in all_news:
@@ -63,6 +63,16 @@ def get_news():
             'title': news.title,
             'text': news.text
         })
+    return result
+
+
+def get_news(id):
+    news = Article.query.filter_by(id=id).first()
+    result = {
+        'id': str(news.id),
+        'title': news.title,
+        'text': news.text
+    }
     return result
 
 

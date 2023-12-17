@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="../static/css/style_all_news.css">
+
+	<title>ITres-news</title>
+</head>
+<body>
+	<div class="container">
+		<div class="header">
+            <div class="container">
+                <div class="header__inner">
+                    <img src="..\static\img\logo.svg">
+                    <nav class="nav">
+						<a style="color:white" href="/"><div class="nav__link">ГЛАВНАЯ</div></a>
+                        <div class="nav__link">ПОРТФОЛИО</div>
+                    </nav>
+                    <div>
+                        <a href="https://t.me/ClubITres" style="text-decoration: none;" target="_blank">
+                            <img class="social__img" src="..\static\img\tg.svg" alt="">
+                        </a>
+                        <a href="https://vk.com/stgau_itres" style="text-decoration: none;" target="_blank">
+                            <img class="social__img" src="..\static\img\vk.svg" alt="">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- Header -->
+
+		<h2 style="color:black" >НОВОСТАЯ ЛЕНТА</h2>
+
+		<div class="all-news">
+			{% for news in all_news %}
+			<div class="news">
+				<a href="#"><img src="{{ news['photo'] }}" alt="image"></a>
+				<div class="title">{{ news['title'] }}</div>
+				<div class="text">{{ news['text'] }}</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+</body>
+</html>
