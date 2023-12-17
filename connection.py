@@ -48,7 +48,7 @@ def authorization():
         if res == 0:
             if current_user.id == 1 and current_user.login == 'admin':
                 return redirect('/admin_panel')
-            return redirect('/editor')
+            return redirect('/lk')
         elif res == 1:
             return render_template('login.html', login_text='Пользователь не найден')
         elif res == 3:
@@ -165,6 +165,19 @@ def all_news():
         news['photo'] = path_join_sing.join([r'..', path_to_news_images, news['id'] + 'n.jpg'])
 
     return render_template('all_news.html', all_news=res)
+
+
+@app.route('/lk')
+@login_required
+def lk():
+    return render_template('lk.html')
+
+
+@app.route('/news_control')
+@login_required
+def news_control():
+    res = get_personal_news(current_user.id)
+    print(res)
 
 
 @app.route('/editor', methods=['GET', 'POST'])

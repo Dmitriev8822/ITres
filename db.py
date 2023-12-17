@@ -107,6 +107,19 @@ def get_news(id):
     return result
 
 
+def get_personal_news(id):
+    all_news = Article.query.filter_by(user=id).all()
+    result = list()
+    for news in all_news:
+        result.append({
+            'id': str(news.id),
+            'title': news.title,
+            'text': news.text,
+            'date': news.date
+        })
+    return result
+
+
 def news_add():
     new_news(user='1', title='Breaking News: Major Earthquake Hits Coastal City',
              text='A powerful earthquake measuring 7.8 on the Richter scale struck a coastal city earlier today. The tremors were felt throughout the region, causing widespread panic and damage to buildings. Rescue teams have been dispatched to the affected areas to assess the situation and provide assistance to those in need.')

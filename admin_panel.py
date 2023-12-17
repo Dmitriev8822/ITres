@@ -49,5 +49,6 @@ def ap_delete_user():
 
 @app.route('/admin_panel/delete_user_<int:n>')
 def ap_du_work(n):
-    res = delete_user(n)
+    if n != 1:
+        res = delete_user(n)
     return redirect('/admin_panel')
