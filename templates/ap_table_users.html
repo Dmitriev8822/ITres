@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    a {
+      color: #ff0000;
+    }
+  </style>
+</head>
+<body>
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Login</th>
+      <th>FIO</th>
+      <th>Delete</th>
+    </tr>
+    {% for user in users %}
+      <tr>
+        <td>{{ user['id'] }}</td>
+        <td>{{ user['login'] }}</td>
+        <td>{{ user['fio'] }}</td>
+        <td><a href="{{ user['path'] }}">Delete</a></td>
+      </tr>
+    {% endfor %}
+  </table>
+</body>
+</html>

@@ -30,12 +30,12 @@
             </div>
         </div> <!-- Header -->
 
-		<h2 style="color:black" >НОВОСТАЯ ЛЕНТА</h2>
+		<h2 style="color:black" >НОВОСТНАЯ ЛЕНТА</h2>
 
 		<div class="all-news">
 			{% for news in all_news %}
 			<div class="news">
-				<a href="#"><img src="{{ news['photo'] }}" alt="image"></a>
+				<a href="{{ news['url'] }}" target="_blank"><img src="{{ news['photo'] }}" alt="image"></a>
 				<div class="title">{{ news['title'] }}</div>
 				<div class="text">{{ news['text'] }}</div>
 			</div>

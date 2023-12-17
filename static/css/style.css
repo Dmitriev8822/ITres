@@ -17,6 +17,11 @@ h1, h2, h3, h4, h5, h6 {
 	box-sizing: border-box;
 }
 
+a {
+	text-decoration: none;
+	color: white;
+}
+
 ::-webkit-scrollbar {
   width: 0;
 }
@@ -40,6 +45,18 @@ h1, h2, h3, h4, h5, h6 {
 	max-width: 1440px;
 
 	margin: 0 auto;
+}
+
+.text__block {
+	background: linear-gradient(to bottom, rgba(48, 39, 62, 1), rgba(48, 39, 62, 0.75));
+
+	display: inline-block;
+
+	margin: 0 auto;
+	border-radius: 15px;
+	padding: 5px 35px;
+
+	font-size: 40px;
 }
 
 /* Header */
@@ -97,30 +114,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .about {
-	width: 1200px;
-	height: 553px;
-
 	background-color: #30273E;
 	border-radius: 25px;
 
-	font-size: 48px;
+	font-size: 45px;
+	line-height: 1.2;
 
 	border: 5px solid #fff;
-	padding: 33px;
 	margin: 0 auto;
 	margin-top: 40px;
-}
-
-.info {
-	width: 942px;
-	height: 377px;
-
-	background-color: #30273E;
-	border-radius: 25px;
-
-	border: 5px solid #fff;
-	padding: 33px;
-	margin-top: 40px;
+	padding: 35px 30px;
 }
 
 /* Galerey */
@@ -196,6 +199,8 @@ h1, h2, h3, h4, h5, h6 {
 	height: 1187px;
 
 	margin: 0 auto;
+
+	font-size: 32px;
 }
 
 .squares > .square:first-child {
@@ -217,6 +222,15 @@ h1, h2, h3, h4, h5, h6 {
 	margin-top: 63px;
 
 	background-color: #30273E;
+
+	display: flex;
+  flex-flow: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.square > img {
+	margin:25px 0;
 }
 
 .resize__phone {
@@ -228,27 +242,6 @@ h1, h2, h3, h4, h5, h6 {
 	border-radius: 35px;
 }
 
-/* Footer */
-
-.footer {
-	width: 100%;
-	margin-top: 218px;
-}
-
-.footer__inner {
-	width: 1190px;
-	height: 370px;
-}
-
-footer {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-
-	margin: 0 auto;
-	margin-top: 100px;
-}
-
 /* News */
 
 .news {
@@ -258,6 +251,7 @@ footer {
 
 .news__inner {
 	height: 570px;
+	width: 1750px;
 
 	display: flex;
 	align-items: center;
@@ -265,4 +259,43 @@ footer {
 
 	margin: 0 auto;
 	position: relative;
+}
+
+/* Footer */
+
+.footer {
+	width: 100%;
+	margin-top: 218px;
+}
+
+.footer__inner {
+	height: 455px;
+}
+
+.footer__inner > .to__margin:nth-child(odd) {
+	margin-bottom: 0;
+	margin-top: auto;
+}
+
+.footer__inner > .to__margin:nth-child(even) {
+	margin-bottom: auto;
+	margin-top: 0;
+}
+
+footer {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	margin-top: 100px;
+}
+
+.to__margin{
+	width: 550px;
+
+	display: flex;
+  flex-flow: column;
+	align-items: center;
+	justify-content: center;
 }

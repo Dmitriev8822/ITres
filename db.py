@@ -1,4 +1,6 @@
 from flask_login import UserMixin, login_user
+from werkzeug.security import check_password_hash, generate_password_hash
+
 from main import db
 
 
@@ -14,6 +16,7 @@ class Article(db.Model):
     user = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     title = db.Column(db.String(100), nullable=False)
     text = db.Column(db.Text, nullable=False)
+    date = db.Column(db.String(20), nullable=False)
 
 
 def create_db():
@@ -26,7 +29,7 @@ def check_user(login, password):
         return 1  # user not found
 
     if user:
-        if user.password == password:
+        if check_password_hash(user.password, password):
             login_user(user)
             return 0  # all ok
         else:
@@ -38,15 +41,41 @@ def register(login, password, fio):
     if existing_user:
         return 1  # user existing
 
-    new_user = User(login=login, password=password, fio=fio)
+    hashed_password = generate_password_hash(password)
+
+    new_user = User(login=login, password=hashed_password, fio=fio)
     db.session.add(new_user)
     db.session.commit()
 
     return 0  # all ok
 
 
-def new_news(user, title, text):
-    news = Article(user=user, title=title, text=text)
+def delete_user(user_id):
+    user = User.query.get(user_id)
+
+    if not user:
+        return 1  # user not found
+
+    db.session.delete(user)
+    db.session.commit()
+
+    return 0
+
+
+def get_all_users():
+    users = User.query.all()
+    result = []
+    for user in users:
+        result.append({
+            'id': str(user.id),
+            'login': user.login,
+            'fio': user.fio
+        })
+    return result
+
+
+def new_news(user, title, text, date):
+    news = Article(user=user, title=title, text=text, date=date)
 
     db.session.add(news)
     db.session.commit()
@@ -61,7 +90,8 @@ def get_all_news():
         result.append({
             'id': str(news.id),
             'title': news.title,
-            'text': news.text
+            'text': news.text,
+            'date': news.date
         })
     return result
 
@@ -71,7 +101,8 @@ def get_news(id):
     result = {
         'id': str(news.id),
         'title': news.title,
-        'text': news.text
+        'text': news.text,
+        'date': news.date
     }
     return result
 
@@ -108,6 +139,10 @@ def news_add():
              text='As summer approaches, travel enthusiasts are planning their vacations to popular destinations. Some of the top choices for this year include tropical beach resorts, European cities with rich history and culture, and scenic mountain getaways. Travel agencies and airlines are offering attractive deals to cater to the increased demand.')
 
 
+def create_admin():
+    register(login='admin', password='TyB7L4hL$#Wx', fio='')
+
+
 if __name__ == '__main__':
     create_db()
-    register('123', '123', '312')
+    create_admin()

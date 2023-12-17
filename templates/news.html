@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="..\static\css\news_style.css">
+        <link rel="stylesheet" href="..\static\css\style_news.css">
         <title>ITres - Новости</title>
     </head>
     <body>
@@ -16,10 +16,10 @@
                         <div class="nav__link">ПОРТФОЛИО</div>
                     </nav>
                     <div>
-                        <a href="https://t.me/ClubITres" style="text-decoration: none;">
+                        <a href="https://t.me/ClubITres" style="text-decoration: none;" target="_blank">
                             <img class="social__img" src="..\static\img\tg.svg" alt="">
                         </a>
-                        <a href="https://vk.com/stgau_itres" style="text-decoration: none;">
+                        <a href="https://vk.com/stgau_itres" style="text-decoration: none;" target="_blank">
                             <img class="social__img" src="..\static\img\vk.svg" alt="">
                         </a>
                     </div>
@@ -31,14 +31,22 @@
         	<div class="container">
         		<div class="info__inner">
         			<div class="info__first">
-        				<p class="info__center"><img src="..\static\img\smallnews.svg" alt=""></p>
-        				<p class="info__center"><img src="..\static\img\bignews.svg" alt=""></p>
-        				<p class="info__center"><img src="..\static\img\news.svg" alt=""></p>
+        				<div class="date">
+	        				<p id="date" class="info__center">
+	        					<h3>{{ news_info['date'] }}</h3>
+	        				</p>
+	        			</div>
+	        			<div class="title">
+	        				<p class="info__center">
+	        					<h2>{{ news_info['title'] }}</h2>
+	        				</p>
+        				</div>
+        				<p class="info__center"><img src="{{ news_info['photo'] }}" alt=""></p>
         			</div>
         			<div class="info__second">
-        				<div class="info__center">ITres | ВКонтакте (vk.com)</div>
-        			</div>
-        		</div>
+        				<div class="info__center">{{ news_info['text'] }}</div>
+                    </div>
+                </div>
         	</div>
         </div>
     </body>
