@@ -15,19 +15,19 @@
         <textarea id="editor" name="editor" placeholder="Начните писать здесь..."></textarea>
         <button id="previewButton">Опубликовать</button>
     </form>
-    <script>
-    const editor = document.getElementById('editor');
-    editor.addEventListener('keydown', function(event) {
-        if (event.key === 'Tab') {
-            event.preventDefault();
+<!--    <script>-->
+<!--    const editor = document.getElementById('editor');-->
+<!--    editor.addEventListener('keydown', function(event) {-->
+<!--        if (event.key === 'Tab') {-->
+<!--            event.preventDefault();-->
 
-            var caretPos = editor.selectionStart;
-            var text = editor.value;
-            editor.value = text.substring(0, caretPos) + '    ' + text.substring(caretPos);
-            editor.selectionStart = caretPos + 4;
-            editor.selectionEnd = caretPos + 4;
-        }
-    });
-    </script>
+<!--            var caretPos = editor.selectionStart;-->
+<!--            var text = editor.value;-->
+<!--            editor.value = text.substring(0, caretPos) + '    ' + text.substring(caretPos);-->
+<!--            editor.selectionStart = caretPos + 4;-->
+<!--            editor.selectionEnd = caretPos + 4;-->
+<!--        }-->
+<!--    });-->
+<!--    </script>-->
 </body>
 </html>

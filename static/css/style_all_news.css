@@ -88,6 +88,7 @@ h1, h2, h3, h4, h5, h6 {
 h2 {
 	text-align: center;
 	font-size: 50px;
+	margin-top: 20px;
 }
 
 .container {
@@ -108,7 +109,7 @@ h2 {
 .news {
 	margin: 20px;
 	height: 350px;
-	width: 280px;
+	width: 330px;
 	background: #000;
 	border-radius: 45px;
 }
@@ -124,7 +125,7 @@ h2 {
 	left: 20px;
 	color: #fff;
 	font-size: 25px;
-	width: 200px;
+	width: 250px;
 }
 
 .news .text {
@@ -136,5 +137,20 @@ h2 {
 	width: 200px;
 }
 
+.BtnDel {
+    text-decoration: none;
+    position: relative;
+    bottom: 400px;
+    left: 120px;
+
+    font-size: 20px;
+    color: red;
+    border: 5px solid #000;
+    border-radius: 40px;
+    padding: 10px;
+    background: #fff;
+    opacity: 0.8;
+    z-index: 1;
+}
 
 

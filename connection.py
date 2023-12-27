@@ -104,9 +104,9 @@ def save_photo(file, image_path, name, max_size=720):
 
     width, height = image.size
 
-    left = (width - 280) // 2
+    left = (width - 330) // 2
     upper = (height - 350) // 2
-    right = left + 280
+    right = left + 330
     lower = upper + 350
 
     cropped_image = image.crop((left, upper, right, lower))
@@ -177,7 +177,23 @@ def lk():
 @login_required
 def news_control():
     res = get_personal_news(current_user.id)
-    print(res)
+    for news in res:
+        if len(news['title']) > 15:
+            news['title'] = news['title'][0:15] + '...'
+        if len(news['text']) >= 25:
+            news['text'] = news['text'][0:60] + '...'
+
+        news['url'] = '/news_' + news['id']
+        news['photo'] = path_join_sing.join([r'..', path_to_news_images, news['id'] + 'n.jpg'])
+        news['dead_url'] = '/delete_news_' + news['id']
+
+    return render_template('news_control.html', all_news=res)
+
+
+@app.route('/delete_news_<int:n>')
+def delete_news(n):
+    res = delete_article(n)
+    return redirect('/news_control')
 
 
 @app.route('/editor', methods=['GET', 'POST'])

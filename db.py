@@ -6,8 +6,8 @@ from main import db
 
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    login = db.Column(db.String(50), unique=True, nullable=False)
-    password = db.Column(db.String(50), nullable=False)
+    login = db.Column(db.String(100), unique=True, nullable=False)
+    password = db.Column(db.String(1000), nullable=False)
     fio = db.Column(db.String(100), nullable=True)
 
 
@@ -62,6 +62,18 @@ def delete_user(user_id):
     return 0
 
 
+def delete_article(article_id):
+    article = Article.query.get(article_id)
+
+    if not article:
+        return 1  # user not found
+
+    db.session.delete(article)
+    db.session.commit()
+
+    return 0
+
+
 def get_all_users():
     users = User.query.all()
     result = []
@@ -98,6 +110,8 @@ def get_all_news():
 
 def get_news(id):
     news = Article.query.filter_by(id=id).first()
+    # news.text = ''.join(['<br>' if el == '\n' else el for el in list(news.text)])
+    # print(news.text, list(news.text))
     result = {
         'id': str(news.id),
         'title': news.title,

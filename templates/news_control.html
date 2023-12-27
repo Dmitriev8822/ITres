@@ -17,7 +17,6 @@
                     <nav class="nav">
 						<a style="color:white" href="/"><div class="nav__link">ГЛАВНАЯ</div></a>
                         <div class="nav__link">ПОРТФОЛИО</div>
-						<div class="nav__link">ФОТО-ГАЛЕРЕЯ</div>
                     </nav>
                     <div>
                         <a href="https://t.me/ClubITres" style="text-decoration: none;" target="_blank">
@@ -31,15 +30,17 @@
             </div>
         </div> <!-- Header -->
 
-		<h2 style="color:black" >НОВОСТНАЯ ЛЕНТА</h2>
+		<h2 style="color:black" >МОИ НОВОСТИ</h2>
 
 		<div class="all-news">
 			{% for news in all_news %}
 			<div class="news">
 				<a href="{{ news['url'] }}" target="_blank"><img src="{{ news['photo'] }}" alt="image"></a>
-				<div class="title">{{ news['title'] }}</div>
+				<div class="title">{{ news['title'] }}</div>`
 				<div class="text">{{ news['text'] }}</div>
+				<a class="BtnDel" href="{{ news['dead_url'] }}">Delete</a>
 			</div>
+
 			{% endfor %}
 		</div>
 	</div>

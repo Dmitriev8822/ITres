@@ -44,40 +44,41 @@
                     <div class="view">
                         <div onclick="image(0)" style="transform: rotate(180deg); cursor: pointer;" ><img src="..\static\img\next.svg"></img></div>
                         <div onmouseover="btn_show()" onmouseover="btn_noshow()" class="wrapper">
-                            <script type="text/javascript">  
+                            <script type="text/javascript">
                                 var imageArray = [
-                                    "../static/img/2.jpg",
-                                    "../static/img/3.jpg",
-                                    "../static/img/4.jpg",
-                                    "../static/img/5.jpg",
-                                    "../static/img/6.jpg",
-                                    "../static/img/7.jpg",
-                                    "../static/img/8.jpg",
-                                    "../static/img/9.jpg",
+                                    "../static/img/1.svg",
+                                    "../static/img/2.svg",
+                                    "../static/img/3.svg",
+                                    "../static/img/4.svg",
+                                    "../static/img/5.svg",
+                                    "../static/img/6.svg",
+                                    "../static/img/7.svg",
+                                    "../static/img/8.svg",
+                                    "../static/img/9.svg",
                                     "../static/img/photo.svg",
                                 ];
                                 window.number = '0';
-                                var imageCount = imageArray.length;     
-                                function image(num){                
+                                var imageCount = imageArray.length;
+                                function image(num){
                                     if(num == 1){
                                         if(number == imageCount - 1)
-                                        {                        
+                                        {
                                             number = -1;
                                             document.getElementById('images').src = imageArray[number];
                                         }
-                                        if(number < imageCount - 1){                        
+                                        if(number < imageCount - 1){
                                             number++;
                                             document.getElementById('images').src = imageArray[number];
                                         }
-                                    }                    
+                                    }
                                     else{
                                         if(number <= 0)
-                                        {                        
+                                        {
                                             number = 8;
                                             document.getElementById('images').src = imageArray[number];
                                         }
                                         else{
-                                            number--;                 
+                                            number--;
                                             document.getElementById('images').src = imageArray[number];
                                         }
                                     }
